@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--A - Header of the Application what we show on Browser head. -->
+  <title>Little League</title>
+  <!--A - Default CSS and Javascript added by Framework. -->
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!--A - Metatag to prevent Cross site request forgory. -->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<!--A - Our Headers tabs. -->
+<div id="user_nav">
+  <% if current_user %>
+    Logged in as <%= current_user.email %>.
+
+    <%= link_to "Log out", log_out_path %><br/><br/><br/>
+<%if current_user.type == "Coach"%>
+    <%= link_to "Leagues", {controller: "leagues" ,action: "index"}, {class: 'myButton'} %>
+
+    <%= link_to "Teams", {controller: "teams" ,action: "index"}, {class: 'myButton'} %>
+<%end%>
+    <%= link_to "Players", {controller: "players" ,action: "index"}, {class: 'myButton'} %>
+
+  <% end %>
+</div>
+
+<!--A - Flash Messages what we show after every action. -->
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
+<!--A - Yield capture and contain HTML chnages in runtime and show on browser. We will have to understand it in details. This is bit complex to understand. -->
+<%= yield %>
+<!--A - Our footers links. -->
+<div id="user_nav">
+  <% if !current_user %>
+    <%= link_to "Register Me", sign_up_path %> or
+    <%= link_to "log in", log_in_path %>
+  <% end %>
+</div>
+
+</body>
+</html>

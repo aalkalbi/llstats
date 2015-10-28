@@ -1,0 +1,45 @@
+<%= form_for(@league) do |f| %>
+  <% if @league.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@league.errors.count, "error") %> prohibited this league from being saved:</h2>
+
+      <ul>
+      <% @league.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :coach_id,:value => session[:user_id] %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label "Teams in Division 1: Little League Major(Age 9 thru 12)" %><br>
+    <%= f.number_field :division_1,:in => 0..100 %>
+  </div>
+  <div class="field">
+    <%= f.label "Teams in Division 2: Junior League (Age 13 thru 14)" %><br>
+    <%= f.number_field :division_2,:in => 0..100 %>
+  </div>
+  <div class="field">
+    <%= f.label "Teams in Division 3: Senior League (Age 14 thru 16)" %><br>
+    <%= f.number_field :division_3,:in => 0..100 %>
+  </div>
+  <div class="field">
+    <%= f.label "Teams in Division 4: Big League (Age 16 thru 18)" %><br>
+    <%= f.number_field :division_4,:in => 0..100 %>
+  </div>
+  <div class="field">
+    <%= f.label "Teams in Division : Challenger League (Age 5 thru 18)" %><br>
+    <%= f.number_field :division_5,:in => 0..100 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

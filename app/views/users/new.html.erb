@@ -1,0 +1,67 @@
+
+<h1>Registration</h1>
+<hr/>
+<br/><br/>
+a) Parents and Relatives can register to see statistics of their kid as a baseball player.
+<br/>b) Coaches can register and can create leagues, teams and players. Coaches can monitor the team and players by watching their statistics.
+
+<hr/>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+     <%= f.label :first_name %><br />
+     <%= f.text_field :first_name, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :dob %><br />
+    <%= f.text_field :dob, autofocus: true %>
+  </p>
+  
+  <p>
+    <%= f.label "Are you a coach?" %><br />
+    <%= f.check_box :is_a_coach, autofocus: true,:onclick=>"showHideDiv(this,'coach_info');" %>
+  </p>
+  
+  <div id="coach_info" style="display:none;">
+   <p>
+    <%= f.label :yrs_coached %><br />
+    <%= f.text_field :yrs_coached, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :affiliation %><br />
+    <%= f.text_field :affiliation, autofocus: true %>
+  </p>
+  </div>
+  <p class="button"><%= f.submit %></p>
+<% end %>
+
+

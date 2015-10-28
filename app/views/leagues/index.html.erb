@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Leagues</h1>
+
+<table width="100%" border="1">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Coach Name</th>
+      <th>Allowd Teams count in Little League Major</th>
+      <th>Allowd Teams count in Junior League</th>
+      <th>Allowd Teams count in Senior League</th>
+      <th>Allowd Teams count in Big League</th>
+      <th>Allowd Teams count in Challenger League</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leagues.each do |league| %>
+      <tr>
+        <td><%= league.title %></td>
+        <td><%= league.coach.first_name.to_s %> <%= league.coach.last_name.to_s %></td>
+        <td><%= league.division_1 %></td>
+        <td><%= league.division_2 %></td>
+        <td><%= league.division_3 %></td>
+        <td><%= league.division_4 %></td>
+        <td><%= league.division_5 %></td>
+        <td><%= link_to 'Show', league %></td>
+        <td><%= link_to 'Edit', edit_league_path(league) %></td>
+        <td><%= link_to 'Destroy', league, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New League', new_league_path %>

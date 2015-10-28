@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @league.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @league.description %>
+</p>
+
+<p>
+  <strong>Division 1:</strong>
+  <%= @league.division_1 %>
+</p>
+
+<p>
+  <strong>Division 2:</strong>
+  <%= @league.division_2 %>
+</p>
+
+<p>
+  <strong>Division 3:</strong>
+  <%= @league.division_3 %>
+</p>
+
+<p>
+  <strong>Division 4:</strong>
+  <%= @league.division_4 %>
+</p>
+
+<p>
+  <strong>Division 5:</strong>
+  <%= @league.division_5 %>
+</p>
+
+<%= link_to 'Edit', edit_league_path(@league) %> |
+<%= link_to 'Back', leagues_path %>

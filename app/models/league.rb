@@ -1,0 +1,8 @@
+class League < ActiveRecord::Base
+  #A - This is for validation of form. When we save form we check presence of follwoing attributes value in form. Else validation error show on page.
+  validates_presence_of :title,:division_1,:division_2,:division_3,:division_4,:division_5
+  #A - League belong to coach because caoch created it. 
+  belongs_to :coach
+  #A - League can have more than one team.
+  has_many :teams, :dependent => :destroy
+end

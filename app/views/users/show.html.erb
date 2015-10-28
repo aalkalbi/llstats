@@ -1,0 +1,22 @@
+<br/>
+<strong><%= @user.type%> Profile</strong>
+<br/>
+<hr/>
+<br/>
+<table width="90%" height="20%" border="0">
+  <tr>
+  <td><strong>Name</strong>: <%= @user.first_name.to_s%> <%= @user.last_name.to_s%> </td>
+  <td><strong>DOB</strong>: <%= @user.dob.to_s%></td>
+  <td><strong>Postal Code</strong>: <%= @user.postal_code.to_s%></td>
+  </tr>
+
+  <tr>
+  <td><strong>Years Coached</strong>: <%= @user.yrs_coached.to_s%></td>
+  <td><strong>Affiliation</strong>: <%= @user.affiliation.to_s%></td>
+  </tr>
+</table>
+<br/>
+<hr/>
+
+<br/><br/>
+
