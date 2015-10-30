@@ -1,3 +1,4 @@
+<%if @user %>
 <br/>
 <strong><%= @user.type%> Profile</strong>
 <br/>
@@ -19,4 +20,6 @@
 <hr/>
 
 <br/><br/>
-
+<%else%>
+<strong>No data to Show. Please choose "Register Me" OR "Log in" to use Little League app.</strong>
+<%end%>

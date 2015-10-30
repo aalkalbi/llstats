@@ -49,6 +49,7 @@
   <strong>Team:</strong>
   <%= @player.team_id %>
 </p>
-
+<%if current_user.type == "Coach" && session[:user_id].to_s == @player.coach.id.to_s%>
 <%= link_to 'Edit', edit_player_path(@player) %> |
+<%end%>
 <%= link_to 'Back', players_path %>

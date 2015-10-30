@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   
   #A - Checking validation of attributes while creating and updating Users.
   validates_confirmation_of :password
+  validates :password, :length =>{
+    :minimum => 8,
+    :too_short => "is too short, must be at least %{count} characters"
+  }, :on => :create
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email

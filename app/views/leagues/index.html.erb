@@ -27,8 +27,10 @@
         <td><%= league.division_4 %></td>
         <td><%= league.division_5 %></td>
         <td><%= link_to 'Show', league %></td>
+<%if session[:user_id].to_s == league.coach.id.to_s %>
         <td><%= link_to 'Edit', edit_league_path(league) %></td>
         <td><%= link_to 'Destroy', league, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%end%>
       </tr>
     <% end %>
   </tbody>

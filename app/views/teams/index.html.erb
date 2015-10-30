@@ -21,8 +21,10 @@
         <td><%= team.location %></td>
         <td><%= team.debut %></td>
         <td><%= link_to 'Show', team %></td>
+<%if session[:user_id].to_s == team.coach.id.to_s %>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%end%>
       </tr>
     <% end %>
   </tbody>

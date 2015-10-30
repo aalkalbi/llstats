@@ -33,8 +33,10 @@
         <td><%= player.rank %></td>
         <td><%= player.team.name.to_s %></td>
         <td><%= link_to 'Show', player %></td>
+<%if current_user.type == "Coach" && session[:user_id].to_s == player.coach.id.to_s%>
         <td><%= link_to 'Edit', edit_player_path(player) %></td>
         <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%end%>
       </tr>
     <% end %>
   </tbody>

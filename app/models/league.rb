@@ -5,4 +5,5 @@ class League < ActiveRecord::Base
   belongs_to :coach
   #A - League can have more than one team.
   has_many :teams, :dependent => :destroy
+  validates_uniqueness_of :title
 end

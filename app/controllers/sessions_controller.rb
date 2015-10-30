@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 #A - Page to create a new user session.Currently we are not using this as we use user new page for login.
 def new
+  session[:user_id] = nil
 end
 
 #A - Create a user session after user login.

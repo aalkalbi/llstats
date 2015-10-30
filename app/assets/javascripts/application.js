@@ -18,6 +18,11 @@
 //A - Below is javascript method. Use to show and hide coach info when user checks "Are you a coach" checkbox.
 
 function showHideDiv(obj,div){
+if(obj.checked){//when 'are you a coach' checkbox is checked.
 document.getElementById(div).style.display = 'block';
+}else{//when 'are you a coach' checkbox is unchecked.
+document.getElementById(div).style.display = 'none';
+}
+
 }
 
