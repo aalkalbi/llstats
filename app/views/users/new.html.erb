@@ -50,8 +50,8 @@ a) Parents and Relatives can register to see statistics of their kid as a baseba
     <%= f.label "Are you a coach?" %><br />
     <%= f.check_box :is_a_coach, autofocus: true,:onclick=>"showHideDiv(this,'coach_info');" %>
   </p>
-  
-  <div id="coach_info" style="display:none;">
+  <%display = @user.is_a_coach.to_s == "1" ? "display:block;" : "display:none;"%>
+  <div id="coach_info" style="<%= display%>">
    <p>
     <%= f.label :yrs_coached %><br />
     <%= f.text_field :yrs_coached, autofocus: true %>

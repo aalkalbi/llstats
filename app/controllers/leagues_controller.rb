@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+  before_action :check_authorization!
+  before_action :check_if_coach!
   before_action :set_league, only: [:show, :edit, :update, :destroy]
 
   # GET /leagues

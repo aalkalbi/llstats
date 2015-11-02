@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
   #A - Resource creates helper path for create, edit , update and delete.
   resources :leagues
   resources :teams
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   root :to => "sessions#new"
   resources :users
   resources :sessions
+  resources :password_resets
 
   resources :parents, controller: 'users', type: 'Parent' 
   resources :coachs, controller: 'users', type: 'Coach' 

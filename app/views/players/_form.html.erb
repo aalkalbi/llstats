@@ -10,10 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <%= f.hidden_field :coach_id,:value => session[:user_id] %>
+  <%= f.hidden_field :coach_id,:value => current_user.id%>
   <div class="field">
     <%= f.label :team_id %><br>
-    <%= f.select("team_id", Team.where("coach_id = ?",session[:user_id]).collect {|p| [ p.name, p.id ] }, {prompt: 'Select a Team'}) %>
+    <%= f.select("team_id", Team.where("coach_id = ?",current_user.id).collect {|p| [ p.name, p.id ] }, {prompt: 'Select a Team'}) %>
   </div>
   <div class="field">
     <%= f.label :first_name %><br>

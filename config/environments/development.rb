@@ -15,6 +15,8 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  #A - Set development mode default URL. It will go as link in emails.
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -30,6 +32,18 @@ Rails.application.configure do
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
+  
+ #A - Send mail from Gmail SMTP server.
+ config.action_mailer.smtp_settings ={
+ :enable_starttls_auto => true,
+ :address            => 'smtp.gmail.com',
+ :port               => 587,
+ :tls                => false,
+ :domain             => 'gmail.com',
+ :authentication     => :plain,
+ :user_name          => 'littleleagacsuchico@gmail.com',
+ :password           => 'littlelega' 
+ }
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.

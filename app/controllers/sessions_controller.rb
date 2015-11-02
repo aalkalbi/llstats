@@ -8,11 +8,11 @@ end
 def create
   user = User.authenticate(params[:email], params[:password])
   if user
-    session[:user_id] = user.id
+    cookies[:auth_token] = user.auth_token
     if user.type.to_s == "Coach"
-      redirect_to coach_path(user.id)
+      redirect_to coach_path(user.auth_token)
     else
-      redirect_to parent_path(user.id)
+      redirect_to parent_path(user.auth_token)
     end
   else
     flash.now.alert = "Invalid email or password"
@@ -21,7 +21,7 @@ def create
 end
 #A - Destroy a user session.
 def destroy
-  session[:user_id] = nil
+  cookies.delete(:auth_token)
   redirect_to root_url, :notice => "Logged out!"
 end
 

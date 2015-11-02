@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :check_authorization!,:except => [:new,:create]
 #A - Page to create a new user.We use user new page for login.
 def new
   @user = User.new
@@ -20,7 +21,8 @@ def create
     @user.type = "Parent"
   end
   if @user.save
-    redirect_to root_url, :notice => "Signed up!"
+    UserMailer.registration_notify(@user).deliver
+    redirect_to root_url, :notice => "Signed up!.You will get an email."
   else
     render "new"
   end
@@ -28,14 +30,14 @@ end
 
 #A - Show details of a registered user. 
 def show
-  @user = User.find_by_id(session[:user_id]) unless session[:user_id].nil?
+  @user = User.find_by_auth_token(cookies[:auth_token]) unless cookies[:auth_token].nil?
 end
 
 private
 
 #A - Only allow mentioned parameters to come to the controller otherwise raise a exception and not save not allowed parameters. 
 def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation,:dob,:first_name,:last_name,:postal_code,:is_a_coach,:type,:yrs_coached,:affiliation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation,:dob,:first_name,:last_name,:postal_code,:is_a_coach,:type,:yrs_coached,:affiliation,:auth_token)
 end
 
 end
